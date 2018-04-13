@@ -32,6 +32,11 @@ public class MainActivityTest2 {
         onView(withId(R.id.textView1))
                 .check(matches(withText(R.string.hello_world)));
 
+        onView(withId(R.id.button1))
+                .perform(click());
+
+        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
+
     }
 
 }
