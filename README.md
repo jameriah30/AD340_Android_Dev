@@ -1,0 +1,2 @@
+[![codecov](https://codecov.io/gh/jameriah30/AD340_Android_Dev/branch/master/graph/badge.svg)](https://codecov.io/gh/jameriah30/AD340_Android_Dev)
+[![CircleCI](https://circleci.com/gh/jameriah30/AD340_Android_Dev.svg?style=svg)](https://circleci.com/gh/jameriah30/AD340_Android_Dev)
