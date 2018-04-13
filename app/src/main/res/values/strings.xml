@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="log_out">Log Out</string>
+    <string name="say_my_name">Smith, Jeremiah, 04/09/2018</string>
+    <string name="click_me">Click Me</string>
+    <string name="thank_you">Thank you for using this App!</string>
+</resources>
