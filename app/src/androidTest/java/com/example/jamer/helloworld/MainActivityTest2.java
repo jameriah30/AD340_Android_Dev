@@ -1,5 +1,6 @@
 package com.example.jamer.helloworld;
 
+import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -7,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static org.junit.Assert.*;
 
 import android.support.test.InstrumentationRegistry;
@@ -32,8 +34,15 @@ public class MainActivityTest2 {
         onView(withId(R.id.textView1))
                 .check(matches(withText(R.string.hello_world)));
 
-        onView(withId(R.id.button1))
+        onView(withId(R.id.submit_button))
                 .perform(click());
+
+        onView(withId(R.id.goback_button))
+                .perform(click());
+
+        onView(withId(R.id.firstname_edittext)).perform(typeText("Jeremiah"));
+
+        Espresso.closeSoftKeyboard();
 
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
 
