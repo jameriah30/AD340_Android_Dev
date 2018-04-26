@@ -43,7 +43,7 @@ public class MainActivityTest2 {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void thisIsATest(){
+    public void inputValidationTest(){
 
         onView(withId(R.id.textView1))
                 .check(matches(withText(R.string.register_form_text)));
@@ -54,24 +54,21 @@ public class MainActivityTest2 {
 //                .perform(click());
 
         onView(withId(R.id.firstname_edittext)).perform(typeText("Jeremiah"));
-
         onView(withId(R.id.lastname_edittext)).perform(typeText("Smith"));
-
         onView(withId(R.id.email_edittext)).perform(typeText("jammy@gmail.com"));
-
         onView(withId(R.id.username_edittext)).perform(typeText("jammy35"));
-
+        onView(withId(R.id.occupation_edittext)).perform(typeText("Developer"));
+        onView(withId(R.id.description_edittext)).perform(typeText("I like craft beer"));
         setDate(R.id.birthday_edittext, 1999, 11, 2);
-
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.password_edittext)).perform(typeText("password"));
-
         onView(withId(R.id.password_again_edittext)).perform(typeText("password"));
-
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.submit_button))
                 .perform(click());
 
 
-        Espresso.closeSoftKeyboard();
+
 
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
 

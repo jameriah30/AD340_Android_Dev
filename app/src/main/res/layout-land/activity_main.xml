@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/profileBackground"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -15,9 +16,11 @@
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="50dp"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
             android:background="#3F51B5"
             android:text="@string/register_form_text"/>
         <EditText
@@ -25,31 +28,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/firstname"/>
         <EditText
             android:id="@+id/lastname_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/lastname"/>
         <EditText
             android:id="@+id/username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/username"/>
-        <EditText
-            android:id="@+id/age_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="@string/age"/>
         <EditText
             android:id="@+id/birthday_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
             android:layout_marginTop="20dp"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/birthday"/>
         <EditText
             android:id="@+id/email_edittext"
@@ -57,13 +62,38 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:inputType="textEmailAddress"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/email"/>
+        <EditText
+            android:id="@+id/occupation_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
+            android:hint="@string/occupation"/>
+        <EditText
+            android:id="@+id/description_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
+            android:hint="@string/description"/>
         <EditText
             android:id="@+id/password_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:inputType="textPassword"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/password"/>
 
         <EditText
@@ -72,6 +102,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:inputType="textPassword"
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
             android:hint="@string/password_again"/>
 
         <Button
@@ -82,62 +114,12 @@
             android:paddingBottom="10dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/submit"/>
+            android:textColor="#8601AF"
+            android:textColorHint="#8601AF"
+            android:text="@string/submit"
+            android:onClick="onClick"/>
 
 
-
-
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context=".MainActivity">-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/hello_world_text"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/hello_world"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:layout_marginRight="10dp"-->
-        <!--android:background="@drawable/activity_main_background">-->
-
-    <!--</TextView>-->
-
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/say_my_name"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/say_my_name"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:layout_marginLeft="10dp"-->
-        <!--android:layout_marginRight="10dp">-->
-
-    <!--</TextView>-->
-
-    <!--<Button-->
-        <!--android:id="@+id/button1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:text="CLICK HERE TO CHANGE TEXT COLOR" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/textView1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@+id/button1"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="34dp"-->
-        <!--android:text="@string/hello_world"-->
-        <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
 
 
     </LinearLayout>

@@ -2,8 +2,10 @@ package com.example.jamer.helloworld;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,18 +14,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import java.util.Calendar;
 
 import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    private EditText firstnameEdittext,lastnameEdittext,emailEdittext,usernameEdittext,birthdayEdittext,passEdittext,passAgainEdittext;
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private EditText firstnameEdittext,lastnameEdittext,emailEdittext,usernameEdittext,birthdayEdittext,passEdittext,passAgainEdittext,occupationEdittext,description_edittext;
 
     private Button submitButton;
     private DatePickerDialog datePickerDialog;
     private int month, day, c_year;
     private TextView textView1;
+    private boolean userClicked;
 
 
 
@@ -55,6 +62,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         passEdittext=(EditText)findViewById(R.id.password_edittext);
         passAgainEdittext=(EditText)findViewById(R.id.password_again_edittext);
         submitButton=(Button)findViewById(R.id.submit_button);
+        occupationEdittext = (EditText)findViewById(R.id.occupation_edittext);
+        description_edittext = (EditText)findViewById(R.id.description_edittext);
     }
 
     private void setViewActions() {
@@ -103,7 +112,68 @@ public class MainActivity extends Activity implements View.OnClickListener{
         return age;
         }
 
-    private void showToastWithFormValues() {
+    //Calculate the users age based off of the Calendar entry
+    public static int calcAge(Date dateOfBirth) {
+
+        Calendar today = Calendar.getInstance();
+        Calendar birthDate = Calendar.getInstance();
+        birthDate.setTime(dateOfBirth);
+        if (birthDate.after(today)) {
+            throw new IllegalArgumentException("Inaccurate birthday");
+        }
+        int todayYear = today.get(Calendar.YEAR);
+        int birthDateYear = birthDate.get(Calendar.YEAR);
+        int todayDayOfYear = today.get(Calendar.DAY_OF_YEAR);
+        int birthDateDayOfYear = birthDate.get(Calendar.DAY_OF_YEAR);
+        int todayMonth = today.get(Calendar.MONTH);
+        int birthDateMonth = birthDate.get(Calendar.MONTH);
+        int todayDayOfMonth = today.get(Calendar.DAY_OF_MONTH);
+        int birthDateDayOfMonth = birthDate.get(Calendar.DAY_OF_MONTH);
+        int age = todayYear - birthDateYear;
+
+        // If DOB is greater than current date (after 2 days adjustment of leap year) then decrement age by one year
+        if ((birthDateDayOfYear - todayDayOfYear > 3) || (birthDateMonth > todayMonth)){
+            age--;
+
+            // If DOB and current date are of same month and birth day of month is greater than todays day of month then decrement age
+        } else if ((birthDateMonth == todayMonth) && (birthDateDayOfMonth > todayDayOfMonth)){
+            age--;
+        }
+        return age;
+    }
+
+//    private void showToastWithFormValues() {
+//
+//        //Get edittexts values
+//        String firstname = firstnameEdittext.getText().toString();
+//        String lastname = lastnameEdittext.getText().toString();
+//        String email = emailEdittext.getText().toString();
+//        String pass = passEdittext.getText().toString();
+//        String passAgain = passAgainEdittext.getText().toString();
+//        String username = usernameEdittext.getText().toString();
+//        String birthday = birthdayEdittext.getText().toString();
+//
+//
+//        //Check all fields
+//        if (!firstname.equals("") && !lastname.equals("") && !email.equals("") && !pass.equals("") && !passAgain.equals("") && !birthday.equals("") && !username.equals("")) {
+//
+//
+//
+//            //Check if pass and passAgain are the same
+//            if (pass.equals(passAgain)) {
+//                //Everything allright
+//                Toast.makeText(this, getResources().getString(R.string.here_is_values, ("\nUsername:" + username + "\nFirstname:" + firstname + "\nLastname:" + lastname + "\nEmail:" + email + "\nBirthday:" + birthday)), Toast.LENGTH_SHORT).show();
+//
+//            } else {
+//                Toast.makeText(this, getResources().getString(R.string.passwords_must_be_the_same), Toast.LENGTH_SHORT).show();
+//            }
+//        } else {
+//            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
+
+    private void moveToProfileActivity(){
 
         //Get edittexts values
         String firstname = firstnameEdittext.getText().toString();
@@ -113,34 +183,164 @@ public class MainActivity extends Activity implements View.OnClickListener{
         String passAgain = passAgainEdittext.getText().toString();
         String username = usernameEdittext.getText().toString();
         String birthday = birthdayEdittext.getText().toString();
+        String occupaton = occupationEdittext.getText().toString();
+        String description = description_edittext.getText().toString();
 
+        Intent intent = new Intent (this, ProfileActivity.class);
 
-        //Check all fields
-        if (!firstname.equals("") && !lastname.equals("") && !email.equals("") && !pass.equals("") && !passAgain.equals("") && !birthday.equals("") && !username.equals("")) {
+        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+        int errorCount = 0;
 
+        Calendar bday = Calendar.getInstance();
+        bday.set(c_year, month, day);
+        int age = calcAge(bday.getTime());
+        String ageString = String.valueOf(age);
 
+        if (isValid(firstnameEdittext)){
+            intent.putExtra(Constants.KEY_FIRST_NAME, firstnameEdittext.getText().toString());
 
-            //Check if pass and passAgain are the same
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(lastnameEdittext)){
+            intent.putExtra(Constants.KEY_LAST_NAME, lastnameEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(emailEdittext)){
+            intent.putExtra(Constants.KEY_EMAIL, emailEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(occupationEdittext)){
+            intent.putExtra(Constants.KEY_OCCUPATION, occupationEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(description_edittext)){
+            intent.putExtra(Constants.KEY_DESCRIPTION, description_edittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(passEdittext)){
+            intent.putExtra(Constants.KEY_PASS, passEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(passAgainEdittext)){
+            intent.putExtra(Constants.KEY_PASSAGAIN, passAgainEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(usernameEdittext)){
+            intent.putExtra(Constants.KEY_USERNAME, usernameEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        if (isValid(birthdayEdittext)){
+            intent.putExtra(Constants.KEY_BIRTHDAY, birthdayEdittext.getText().toString());
+
+        } else {
+            errorCount += 1;
+            Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
+        }
+
+        //Check if pass and passAgain are the same
             if (pass.equals(passAgain)) {
                 //Everything allright
-                Toast.makeText(this, getResources().getString(R.string.here_is_values, ("\nUsername:" + username + "\nFirstname:" + firstname + "\nLastname:" + lastname + "\nEmail:" + email + "\nBirthday:" + birthday)), Toast.LENGTH_SHORT).show();
+                intent.putExtra(Constants.KEY_PASS, passEdittext.getText().toString());
+                intent.putExtra(Constants.KEY_PASSAGAIN, passAgainEdittext.getText().toString());
 
             } else {
-                Toast.makeText(this, getResources().getString(R.string.passwords_must_be_the_same), Toast.LENGTH_SHORT).show();
+                errorCount += 1;
+                dlgAlert.setMessage("Password entries must match!");
+                dlgAlert.setTitle("Error Message...");
+                dlgAlert.setPositiveButton("OK", null);
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+
+                dlgAlert.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
             }
+
+        if (isOfAge(month, day, c_year)){
+
+                intent.putExtra(Constants.KEY_AGE, ageString);
+
+
+        } else {
+            errorCount += 1;
+            dlgAlert.setMessage("Must be at least 18 years of age");
+            dlgAlert.setTitle("Error Message...");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
+
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+
+//
+        }
+
+
+
+        // if errorCount is = to 0, proceed to next activity
+        if (errorCount == 0) {
+            startActivity(intent);
+
         } else {
             Toast.makeText(this, getResources().getString(R.string.no_field_can_be_empty), Toast.LENGTH_SHORT).show();
         }
 
-        if (!isOfAge(month, day, c_year)) {
-            Toast.makeText(this, "Must be 18 year of age!", Toast.LENGTH_SHORT).show();
-        } else{
-            Intent intent = new Intent (this, Main2Activity.class);
-            intent.putExtra(Constants.KEY_USERNAME, username );
-            startActivity(intent);
 
-        }
+
     }
+
+    public boolean isValid(EditText input) {
+
+        String entry = input.getText().toString();
+        int num = entry.length();
+        //if a user enters " " it accepts that as input.
+        if (num >= 1){
+            return true;
+        }
+
+        return false;
+    }
+
+
 
 
 
@@ -154,9 +354,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 datePickerDialog.show();
                 break;
             case R.id.submit_button:
-                showToastWithFormValues();
+                moveToProfileActivity();
                 break;
         }
+
     }
 
 
