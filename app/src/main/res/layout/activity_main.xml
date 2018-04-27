@@ -77,9 +77,9 @@
         <EditText
             android:id="@+id/description_edittext"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:inputType="textCapSentences|textMultiLine"
-            android:maxLength="2000"
+            android:maxLength="500"
             android:maxLines="4"
             android:layout_weight="1"
             android:layout_marginTop="20dp"
