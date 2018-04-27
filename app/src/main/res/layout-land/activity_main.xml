@@ -106,22 +106,26 @@
             android:textColorHint="#8601AF"
             android:hint="@string/password_again"/>
 
-        <Button
-            android:id="@+id/submit_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:textColor="#8601AF"
-            android:textColorHint="#8601AF"
-            android:text="@string/submit"
-            android:onClick="onClick"/>
+            android:orientation="horizontal"
+            android:gravity="end">
 
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textColor="#8601AF"
+                android:textColorHint="#8601AF"
+                android:text="@string/submit"
+                android:onClick="onClick"/>
 
-
-
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

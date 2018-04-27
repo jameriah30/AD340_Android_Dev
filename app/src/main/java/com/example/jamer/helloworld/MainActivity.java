@@ -288,9 +288,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                             }
                         });
-
-            }
-
+                }
+        //check to make sure user is of age, if not throw alert message
         if (isOfAge(month, day, c_year)){
 
                 intent.putExtra(Constants.KEY_AGE, ageString);
@@ -310,9 +309,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                         }
                     });
-
-//
-        }
+            }
 
 
 

@@ -68,6 +68,13 @@ public class MainActivityTest2 {
                 .perform(click());
 
 
+        TestUtils.rotateScreen(mActivityTestRule.getActivity());
+
+        // Make sure text view input  still has proper values after screen rotation
+        onView(withId(R.id.welcome))
+                .check(matches(withText("Welcome to the dating app:jammy35")));
+
+
 
 
         openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
