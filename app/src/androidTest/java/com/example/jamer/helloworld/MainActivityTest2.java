@@ -71,8 +71,26 @@ public class MainActivityTest2 {
         TestUtils.rotateScreen(mActivityTestRule.getActivity());
 
         // Make sure text view input  still has proper values after screen rotation
-        onView(withId(R.id.welcome))
-                .check(matches(withText("Welcome to the dating app:jammy35")));
+        onView(withId(R.id.firstname_edittext))
+                .check(matches(withText("Jeremiah")));
+        onView(withId(R.id.lastname_edittext))
+                .check(matches(withText("Smith")));
+        onView(withId(R.id.email_edittext))
+                .check(matches(withText("jammy@gmail.com")));
+        onView(withId(R.id.username_edittext))
+                .check(matches(withText("jammy35")));
+        onView(withId(R.id.occupation_edittext))
+                .check(matches(withText("Developer")));
+        onView(withId(R.id.description_edittext))
+                .check(matches(withText("I like craft beer")));
+        onView(withId(R.id.password_edittext))
+                .check(matches(withText("password")));
+        onView(withId(R.id.password_again_edittext))
+                .check(matches(withText("password")));
+        Espresso.closeSoftKeyboard();
+
+
+
 
 
 
