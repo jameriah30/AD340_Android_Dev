@@ -66,9 +66,9 @@ public class MainActivityTest2 {
         onView(withId(R.id.password_edittext)).perform(scrollTo(), typeText("password"));
         onView(withId(R.id.password_again_edittext)).perform(scrollTo(), typeText("password"));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.submit_button))
-                .perform(click());
-        Espresso.closeSoftKeyboard();
+//        onView(withId(R.id.submit_button))
+//                .perform(click());
+//        Espresso.closeSoftKeyboard();
 
 
         TestUtils.rotateScreen(mActivityTestRule.getActivity());
