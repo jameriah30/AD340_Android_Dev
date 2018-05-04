@@ -1,69 +1,81 @@
 package com.example.jamer.helloworld;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
-import static android.content.ContentValues.TAG;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ProfileActivity extends Activity {
+
+public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = ProfileActivity.class.getSimpleName();
 
-    private TextView say_my_name;
-    private TextView welcome;
-    private TextView p_age;
-    private TextView p_occupation;
-    private TextView p_description;
 
 
+    private Adapter adapter;
+    private ViewPager vpage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.thankyou_main);
-        say_my_name = findViewById(R.id.say_my_name);
-        welcome = findViewById(R.id.welcome);
-        p_age = findViewById(R.id.p_age);
-        p_occupation = findViewById(R.id.p_occupation);
-        p_description = findViewById(R.id.p_description);
+        setContentView(R.layout.profile_activity);
 
-        StringBuilder msg = new StringBuilder("Thank you for registering: ");
-        Intent intent = getIntent();
-        Bundle b = intent.getExtras();
-        Log.i(TAG, "intent");
+        adapter = new Adapter(getSupportFragmentManager());
+        vpage = findViewById(R.id.viewpager);
 
+        setupViewPager(vpage);
 
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
 
-        assert b != null;
-        if (b.containsKey(Constants.KEY_USERNAME)){
-            String userName = b.getString(Constants.KEY_USERNAME);
-            welcome.append(userName);
+        tabs.setupWithViewPager(vpage);
+
         }
 
-        if (b.containsKey(Constants.KEY_AGE)){
-            String age = b.getString(Constants.KEY_AGE);
-            p_age.append(age);
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new ProfileFragment(), "Profile");
+        adapter.addFragment(new MatchesFragment(), "Matches");
+        adapter.addFragment(new SettingsFragment(), "Settings");
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
         }
 
-        if (b.containsKey(Constants.KEY_OCCUPATION)){
-            String occupation = b.getString(Constants.KEY_OCCUPATION);
-            p_occupation.append(occupation);
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
         }
 
-        if (b.containsKey(Constants.KEY_DESCRIPTION)){
-            String description = b.getString(Constants.KEY_DESCRIPTION);
-            p_description.append(description);
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
         }
 
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
 
-
-
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
 
@@ -85,26 +97,26 @@ public class ProfileActivity extends Activity {
 //        Log.i(TAG, "onStart()");
 //    }
 //
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        Log.i(TAG, "onRestoreInstanceState()");
-        if (savedInstanceState.containsKey(Constants.KEY_WELCOME_TEXT)) {
-            welcome.setText((String) savedInstanceState.get(Constants.KEY_WELCOME_TEXT));
-        }
-
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        Log.i(TAG, "onSaveInstanceState()");
-
-        outState.putString(Constants.KEY_WELCOME_TEXT, welcome.getText().toString());
-
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        Log.i(TAG, "onRestoreInstanceState()");
+//        if (savedInstanceState.containsKey(Constants.KEY_WELCOME_TEXT)) {
+//            welcome.setText((String) savedInstanceState.get(Constants.KEY_WELCOME_TEXT));
+//        }
+//
+//    }
+//
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//
+//        Log.i(TAG, "onSaveInstanceState()");
+//
+//        outState.putString(Constants.KEY_WELCOME_TEXT, welcome.getText().toString());
+//
+//    }
 
 
 }

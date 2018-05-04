@@ -14,11 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Date;
-
 import java.util.Calendar;
-
-import static android.content.ContentValues.TAG;
+import java.util.Date;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -39,6 +36,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView1 = findViewById(R.id.textView1);
+
+
 
         //Bind views with their ids
         bindViews();
@@ -173,7 +172,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //
 //    }
 
-    private void moveToProfileActivity(){
+    private void moveToTabActivity(){
 
         //Get edittexts values
         String firstname = firstnameEdittext.getText().toString();
@@ -338,12 +337,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
 
-
-
-
-
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -351,13 +344,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 datePickerDialog.show();
                 break;
             case R.id.submit_button:
-                moveToProfileActivity();
+                moveToTabActivity();
                 break;
         }
 
     }
-
-
 
     @Override
     protected void onRestart() {
