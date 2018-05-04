@@ -44,8 +44,6 @@ import android.support.test.runner.AndroidJUnit4;
 import android.widget.DatePicker;
 
 import org.hamcrest.Matchers;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,15 +65,15 @@ public class MainActivityTest2 {
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Before
-    public void setUp() throws Exception {
-        // mActivity = mActivityTestRule.getActivity();
-    }
-
-    @After
-    public void tearDown() {
-        // mActivity = null;
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        // mActivity = mActivityTestRule.getActivity();
+//    }
+//
+//    @After
+//    public void tearDown() {
+//        // mActivity = null;
+//    }
 
 
     private String FirstName = "Jeremiah";
