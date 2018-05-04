@@ -1,7 +1,6 @@
 package com.example.jamer.helloworld;
 
-//public class ProfileFragmentTest {
-//}
+
 
 import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
@@ -39,7 +38,7 @@ public class ProfileFragmentTest {
         }
     };
 
-
+//Passed
     @Test
     public void testForTabs(){
 
@@ -50,15 +49,33 @@ public class ProfileFragmentTest {
     }
 
 //    @Test
+//    public void testSwipeThroughFragments(){
+//
+//        onView(withId(R.id.viewpager))
+//                .perform(swipeLeft());
+//
+//        //Matches tab
+//        onView(withId(R.id.matchesFrag))
+//                .check(matches(withText("Matches Fragment Soon to Come")));
+//
+//        onView(withId(R.id.viewpager))
+//                .perform(swipeLeft());
+//
+//        //Settings tab
+//        onView(withId(R.id.settingsFrag))
+//                .check(matches(withText("Settings Fragment Soon to Come")));
+//    }
+
+//    @Test
 //    public void testIntentExtra(){
 //        onView(withId(R.id.p_age))
-//                .check(matches(withText("35")));
+//                .check(matches(withText("Age:")));
 //
 //        onView(withId(R.id.p_occupation))
-//                .check(matches(withText("Student")));
+//                .check(matches(withText("Occupation:")));
 //
 //        onView(withId(R.id.p_description))
-//                .check(matches(withText("I like craft beer")));
+//                .check(matches(withText("Description:")));
 //
 //    }
 //

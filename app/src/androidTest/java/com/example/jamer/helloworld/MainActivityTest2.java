@@ -37,6 +37,7 @@ package com.example.jamer.helloworld;
 ////import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 
 
+import android.content.Intent;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.contrib.PickerActions;
 import android.support.test.rule.ActivityTestRule;
@@ -256,61 +257,35 @@ public class MainActivityTest2 {
         onView(withId(R.id.submit_button)).perform(scrollTo(),click());
 //        Espresso.pressBack();
 
-
-//        onView(withId(R.id.submit_button))
-//                .perform(click());
-//        Espresso.closeSoftKeyboard();
-
-
-//        TestUtils.rotateScreen(mActivityTestRule.getActivity());
-//
-//        onView(withId(R.id.firstname_edittext))
-//                .check(matches(withText(FirstName)));
-//        onView(withId(R.id.lastname_edittext))
-//                .check(matches(withText(LastName)));
-//        onView(withId(R.id.email_edittext))
-//                .check(matches(withText(Email)));
-//        onView(withId(R.id.username_edittext))
-//                .check(matches(withText(Username)));
-//        onView(withId(R.id.occupation_edittext))
-//                .check(matches(withText(Job)));
-//        onView(withId(R.id.description_edittext))
-//                .check(matches(withText(Bio)));
-//        onView(withId(R.id.birthday_edittext))
-//                .check(matches(withText(Dob)));
-//        onView(withId(R.id.password_edittext))
-//                .check(matches(withText(Pass)));
-//        onView(withId(R.id.password_again_edittext))
-//                .check(matches(withText(PassAgain)));
     }
 
-//    @Test
-//    public void validScreenRotateSubmitTest() {
-//
-//        onView(withId(R.id.textView1))
-//                .check(matches(withText(R.string.register_form_text)));
-//
-//
-////        onView(withId(R.id.goback_button))
-////                .perform(click());
-//
-//        onView(withId(R.id.firstname_edittext)).perform(scrollTo(),typeText(FirstName));
-//
-//
-//        onView(withId(R.id.lastname_edittext)).perform(scrollTo(), typeText(LastName));
-//
-//
-//        onView(withId(R.id.email_edittext)).perform(scrollTo(), typeText(Email));
-//
-//
-//        onView(withId(R.id.username_edittext)).perform(scrollTo(), typeText(Username));
-//
-//
-//        onView(withId(R.id.occupation_edittext)).perform(scrollTo(), typeText(Job));
-//
-//
-//        onView(withId(R.id.description_edittext)).perform(scrollTo(), typeText(Bio));
-//        Espresso.closeSoftKeyboard();
+    @Test
+    public void goToSecondActivity(){
+
+        onView(withId(R.id.textView1))
+                .check(matches(withText(R.string.register_form_text)));
+
+
+//        onView(withId(R.id.goback_button))
+//                .perform(click());
+
+        onView(withId(R.id.firstname_edittext)).perform(scrollTo(),typeText(FirstName));
+
+
+        onView(withId(R.id.lastname_edittext)).perform(scrollTo(), typeText(LastName));
+
+
+        onView(withId(R.id.email_edittext)).perform(scrollTo(), typeText(Email));
+
+
+        onView(withId(R.id.username_edittext)).perform(scrollTo(), typeText(Username));
+
+
+        onView(withId(R.id.occupation_edittext)).perform(scrollTo(), typeText(Job));
+
+
+        onView(withId(R.id.description_edittext)).perform(scrollTo(), typeText(Bio));
+        Espresso.closeSoftKeyboard();
 
 //        onView(withId(R.id.birthday_edittext))
 //                .perform(click());
@@ -320,84 +295,35 @@ public class MainActivityTest2 {
 
 //        onView(withId(R.id.birthday_edittext))
 //                .check(matches(withText(Dob)));
-//        setDate(R.id.birthday_edittext, 1982, 11, 2);
-//
-//
-//        // rotate the screen before
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//
-//        Espresso.closeSoftKeyboard();
-//        onView(withId(R.id.submit_button)).perform(ViewActions.scrollTo());
-//        onView(withId(R.id.submit_button)).perform(click());
+        setDate(R.id.birthday_edittext, 1982, 11, 2);
+        Espresso.closeSoftKeyboard();
+
+        onView(withId(R.id.password_edittext)).perform(scrollTo(), typeText(Pass));
+        Espresso.closeSoftKeyboard();
+
+        onView(withId(R.id.password_again_edittext)).perform(scrollTo(), typeText(PassAgain));
+        Espresso.closeSoftKeyboard();
+
+//        onView(withId(R.id.submit_button)).perform(scrollTo(),click());
 //        Espresso.pressBack();
-//
-//    }
 
-        // Make sure text view input  still has proper values after screen rotation
+        Intent intent = new Intent();
 
-//        onView(withId(R.id.firstname_edittext)).perform(scrollTo()).check(matches(withText("Jeremiah")));
-//        onView(withId(R.id.lastname_edittext)).perform(scrollTo()).check(matches(withText("Smith")));
-//        onView(withId(R.id.email_edittext)).perform(scrollTo()).check(matches(withText("jammy@gmail.com")));
-//        onView(withId(R.id.p_age)).check(matches(withText("35")));
-//        onView(withId(R.id.p_occupation)).perform(scrollTo()).check(matches(withText("Developer")));
-//        onView(withId(R.id.p_description)).perform(scrollTo()).check(matches(withText("I like craft beer")));
-//        onView(withId(R.id.password_edittext)).perform(scrollTo()).check(matches(withText("password")));
-//        onView(withId(R.id.password_again_edittext)).perform(scrollTo()).check(matches(withText("password")));
+        intent.putExtra(Constants.KEY_FIRST_NAME, "Jeremiah");
+        intent.putExtra(Constants.KEY_LAST_NAME, "Smith");
+        intent.putExtra(Constants.KEY_EMAIL, "jammy@gmail.com");
+        intent.putExtra(Constants.KEY_USERNAME, "jammy35");
+        intent.putExtra(Constants.KEY_AGE, "35");
+        intent.putExtra(Constants.KEY_OCCUPATION, "Student");
+        intent.putExtra(Constants.KEY_DESCRIPTION, "I like craft beer");
+        intent.putExtra(Constants.KEY_PASS, "password");
+        intent.putExtra(Constants.KEY_PASSAGAIN, "password");
 
+        mActivityTestRule.launchActivity(intent);
 
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        onView(withId(R.id.firstname_edittext)).perform(scrollTo()).check(matches(withText("Jeremiah")));
-//        onView(withId(R.id.lastname_edittext)).perform(scrollTo()).check(matches(withText("Smith")));
-//        onView(withId(R.id.email_edittext)).perform(scrollTo()).check(matches(withText("jammy@gmail.com")));
-//        onView(withId(R.id.username_edittext)).check(matches(withText("jammy35")));
-//        onView(withId(R.id.occupation_edittext)).perform(scrollTo()).check(matches(withText("Developer")));
-//        onView(withId(R.id.description_edittext)).perform(scrollTo()).check(matches(withText("I like craft beer")));
-//        onView(withId(R.id.password_edittext)).perform(scrollTo()).check(matches(withText("password")));
-//        onView(withId(R.id.password_again_edittext)).perform(scrollTo()).check(matches(withText("password")));
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        onView(withId(R.id.firstname_edittext)).perform(scrollTo()).check(matches(withText("Jeremiah")));
-//        onView(withId(R.id.lastname_edittext)).perform(scrollTo()).check(matches(withText("Smith")));
-//        onView(withId(R.id.email_edittext)).perform(scrollTo()).check(matches(withText("jammy@gmail.com")));
-//        onView(withId(R.id.username_edittext)).check(matches(withText("jammy35")));
-//        onView(withId(R.id.occupation_edittext)).perform(scrollTo()).check(matches(withText("Developer")));
-//        onView(withId(R.id.description_edittext)).perform(scrollTo()).check(matches(withText("I like craft beer")));
-//        onView(withId(R.id.password_edittext)).perform(scrollTo()).check(matches(withText("password")));
-//        onView(withId(R.id.password_again_edittext)).perform(scrollTo()).check(matches(withText("password")));
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
 
 
-
-
-
-
-
-//        openActionBarOverflowOrOptionsMenu(InstrumentationRegistry.getTargetContext());
-
-//    }
-//    @Test
-//    public void rotatingSumbitwithValid() {
-//        onView(withId(R.id.firstname_edittext)).perform(scrollTo(), typeText("Jeremiah"));
-//        onView(withId(R.id.lastname_edittext)).perform(scrollTo(), typeText("Smith"));
-//        onView(withId(R.id.username_edittext)).perform(scrollTo(), typeText("jammy35"));
-//        onView(withId(R.id.email_edittext)).perform(scrollTo(), typeText("jammy@gmail.com"));
-//        onView(withId(R.id.occupation_edittext)).perform(scrollTo(), typeText("Developer"));
-//        onView(withId(R.id.description_edittext)).perform(scrollTo(), typeText("I like craft beer"));
-//        onView(withId(R.id.password_edittext)).perform(scrollTo(), typeText("password"));
-//        onView(withId(R.id.password_again_edittext)).perform(scrollTo(), typeText("password"));
-//        Espresso.closeSoftKeyboard();
-//        setDate(R.id.birthday_edittext, 1982, 11, 02);
-//
-//        // rotate the screen before
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        mActivityTestRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//
-//        Espresso.closeSoftKeyboard();
-////        onView(withId(R.id.submit_button)).perform(ViewActions.scrollTo());
-//        onView(withId(R.id.submit_button)).perform(click());
-//    }
 
     public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
         onView(withId(datePickerLaunchViewId)).perform(click());
