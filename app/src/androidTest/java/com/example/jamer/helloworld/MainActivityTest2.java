@@ -251,9 +251,9 @@ public class MainActivityTest2 {
         Espresso.closeSoftKeyboard();
 
         onView(withId(R.id.password_again_edittext)).perform(scrollTo(), typeText(PassAgain));
-        
+        Espresso.closeSoftKeyboard();
 
-        onView(withId(R.id.submit_button)).perform(click());
+        onView(withId(R.id.submit_button)).perform(scrollTo(),click());
 //        Espresso.pressBack();
 
 
