@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
 
-    private static final String TAG = ProfileActivity.class.getSimpleName();
+    private static final String TAG = SecondActivity.class.getSimpleName();
 
 
 
@@ -81,7 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     public void goBackMain(View view){
-       Intent goBack = new Intent(ProfileActivity.this, MainActivity.class) ;
+       Intent goBack = new Intent(SecondActivity.this, MainActivity.class) ;
        startActivity(goBack);
     }
 

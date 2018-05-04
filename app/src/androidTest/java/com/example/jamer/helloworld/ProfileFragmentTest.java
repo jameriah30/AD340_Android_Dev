@@ -1,7 +1,6 @@
 package com.example.jamer.helloworld;
 
 
-
 import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -20,8 +19,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 public class ProfileFragmentTest {
 
     @Rule
-    public ActivityTestRule<ProfileActivity> activityTestRule
-            = new ActivityTestRule<ProfileActivity>(ProfileActivity.class) {
+    public ActivityTestRule<SecondActivity> activityTestRule
+            = new ActivityTestRule<SecondActivity>(SecondActivity.class) {
         @Override
         protected Intent getActivityIntent() {
             Intent intentToTest = new Intent();
@@ -96,40 +95,10 @@ public class ProfileFragmentTest {
 //        onView(withId(R.id.username_edittext))
 //                .check(matches(withText("")));
 //
-////        onView(withId(R.id.birthday_edittext))
-////                .check(matches(withHint(@string/birthday)));
-//    }
-
-//    @Test
-//    public void testThatAgeExists() {
-//        onView(withId(R.id.p_age))
-//                .check(matches(withText("35")));
-//    }
-//
-//
-//    @Test
-//    public void testThatOccupationExists() {
-//        onView(withId(R.id.p_occupation))
-//                .check(matches(withText("Student")));
-//    }
-//
-//    @Test
-//    public void testThatBioExists() {
-//        onView(withId(R.id.p_description))
-//                .check(matches(withText("I like craft beer")));
+//        onView(withId(R.id.birthday_edittext))
+//                .check(matches(withHint("Birthday")));
 //    }
 
 
-//    @Test
-//    public void testThatNewProfileButtonExists() {
-//        onView(withId(R.id.goback_button))
-//                .check(matches(isDisplayed()));
-//    }
-
-//    @Test
-//    public void testThatNewProfileFileButtonIsClickAble() {
-//        onView(withId(R.id.goback_button)).perform(click());
-////        onView(withId(R.id.firstname_edittext)).check(matches(withText("")));
-//    }
 
 }

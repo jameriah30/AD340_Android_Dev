@@ -185,7 +185,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         String occupaton = occupationEdittext.getText().toString();
         String description = description_edittext.getText().toString();
 
-        Intent intent = new Intent (this, ProfileActivity.class);
+        Intent intent = new Intent (this, SecondActivity.class);
 
         AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
         int errorCount = 0;
