@@ -256,7 +256,7 @@ public class MainActivityTest2 {
         Espresso.closeSoftKeyboard();
 
         onView(withId(R.id.submit_button)).perform(click());
-        Espresso.pressBack();
+//        Espresso.pressBack();
 
 
 //        onView(withId(R.id.submit_button))
