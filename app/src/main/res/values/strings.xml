@@ -4,7 +4,7 @@
     <string name="log_out">Log Out</string>
     <string name="say_my_name">App by: Smith, Jeremiah, 04/24/2018</string>
     <string name="click_me">Click Me</string>
-    <string name="thank_you">Thank you for using this App!</string>
+    <string name="thank_you">Thank you for using this App-</string>
     <string name="firstname">Firstname</string>
     <string name="lastname">Lastname</string>
     <string name="email">Email</string>
@@ -23,9 +23,9 @@
     <string name="occupation">Occupation</string>
     <string name="description">Description</string>
     <string name="welcome">Welcome to the dating app: </string>
-    <string name="p_age">Age: </string>
-    <string name="p_occupation">Occupation: </string>
-    <string name="p_desription">Description: </string>
+    <string name="p_age">Age- </string>
+    <string name="p_occupation">Occupation- </string>
+    <string name="p_desription">Description- </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -50,29 +50,29 @@ public class MatchesFragment extends Fragment {
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView mPicture;
-        public TextView mName;
-        public TextView mDescription;
+        public ImageView matchPicture;
+        public TextView matchName;
+        public TextView matchBio;
         public ImageButton likeButton;
-        boolean flag = false;
+        boolean like = false;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.fragment_matches, parent, false));
 
-            mPicture = itemView.findViewById(R.id.card_image);
-            mName = itemView.findViewById(R.id.card_title);
-            mDescription = itemView.findViewById(R.id.card_text);
+            matchPicture = itemView.findViewById(R.id.card_image);
+            matchName = itemView.findViewById(R.id.card_title);
+            matchBio = itemView.findViewById(R.id.card_text);
             likeButton = itemView.findViewById(R.id.likeButton);
 
             likeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!flag) {
-                        Toast.makeText(itemView.getContext(), "You liked " + mName.getText().toString(), Toast.LENGTH_LONG).show();
-                        flag = true;
+                    if (!like) {
+                        Toast.makeText(itemView.getContext(), "You like " + matchName.getText().toString(), Toast.LENGTH_LONG).show();
+                        like = true;
                         likeButton.setColorFilter(Color.RED);
                     } else {
-                        flag = false;
+                        like = false;
                         likeButton.setColorFilter(Color.GRAY);
                     }
                 }
@@ -81,16 +81,16 @@ public class MatchesFragment extends Fragment {
     }
 
     public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
+
 
         private final String[] mNames;
-        private final String[] mDescriptions;
+        private final String[] mBios;
         private final Drawable[] mPictures;
 
         public ContentAdapter(Context context) {
             Resources resources = context.getResources();
             mNames = resources.getStringArray(R.array.matches_names);
-            mDescriptions = resources.getStringArray(R.array.matches_desc);
+            mBios = resources.getStringArray(R.array.matches_bios);
             TypedArray a = resources.obtainTypedArray(R.array.matches_picture);
             mPictures = new Drawable[a.length()];
             for (int i = 0; i < mPictures.length; i++) {
@@ -106,9 +106,9 @@ public class MatchesFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mPicture.setImageDrawable(mPictures[position % mPictures.length]);
-            holder.mName.setText(mNames[position % mNames.length]);
-            holder.mDescription.setText(mDescriptions[position % mDescriptions.length]);
+            holder.matchPicture.setImageDrawable(mPictures[position % mPictures.length]);
+            holder.matchName.setText(mNames[position % mNames.length]);
+            holder.matchBio.setText(mBios[position % mBios.length]);
         }
 
         @Override

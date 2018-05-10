@@ -9,6 +9,7 @@
     android:layout_marginBottom="@dimen/md_keylines"
     android:layout_marginLeft="@dimen/md_keylines"
     android:layout_marginRight="@dimen/md_keylines"
+    android:background="@color/profileBackground"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
@@ -54,7 +55,7 @@
             android:layout_alignParentEnd="true"
             android:clickable="true"
             style="?android:attr/borderlessButtonStyle"
-            android:tint="#757575" />
+            android:tint="	#000000" />
 
 
     </RelativeLayout>
