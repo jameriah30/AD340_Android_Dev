@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="md_keylines">16dp</dimen>
+    <dimen name="card_title_height">160dp</dimen>
+    <dimen name="card_img_height">200dp</dimen>
+    <dimen name="article_subheading">16sp</dimen>
 </resources>
