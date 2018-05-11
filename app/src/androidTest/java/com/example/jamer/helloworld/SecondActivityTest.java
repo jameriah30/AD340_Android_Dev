@@ -16,7 +16,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
-public class ProfileFragmentTest {
+public class SecondActivityTest {
 
     @Rule
     public ActivityTestRule<SecondActivity> activityTestRule
@@ -45,7 +45,33 @@ public class ProfileFragmentTest {
                 .perform(click())
                 .check(matches(isDisplayed()));
 
-    }
+}
+
+
+//    @Test
+//    public void testSwipeThroughTabs() {
+//        //Profile tab
+//        onView(withId(R.id.p_age))
+//                .check(matches(withText("Age:")));
+//
+//        onView(withId(R.id.p_occupation))
+//                .check(matches(withText("Student")));
+//
+//        onView(withId(R.id.p_description))
+//                .check(matches(withText("I like craft beer")));
+//
+//
+//
+//        onView(withId(R.id.viewpager))
+//                .perform(swipeLeft());
+//
+//        onView(withId(R.id.viewpager))
+//                .perform(swipeLeft());
+//
+//        //Settings tab
+//        onView(withId(R.id.settingsFrag))
+//                .check(matches(withText("Settings Fragment Soon to Come")));
+//    }
 
 //    @Test
 //    public void testSwipeThroughFragments(){

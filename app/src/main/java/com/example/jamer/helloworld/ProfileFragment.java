@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
         p_occupation = profileView.findViewById(R.id.p_occupation);
         p_description = profileView.findViewById(R.id.p_description);
 
-        StringBuilder msg = new StringBuilder("Thank you for registering: ");
+        StringBuilder msg = new StringBuilder("Thank you for registering- ");
         Intent intent = getActivity().getIntent();
         Bundle b = intent.getExtras();
         Log.i(TAG, "intent");
