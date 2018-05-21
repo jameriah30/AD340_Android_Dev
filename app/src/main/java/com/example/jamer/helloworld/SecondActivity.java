@@ -10,11 +10,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.example.jamer.helloworld.models.Matches;
+import com.example.jamer.helloworld.viewmodels.MatchesViewModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements MatchesFragment.OnListFragmentInteractionListener  {
 
     private static final String TAG = SecondActivity.class.getSimpleName();
 
@@ -22,12 +25,15 @@ public class SecondActivity extends AppCompatActivity {
 
     private Adapter adapter;
     private ViewPager vpage;
+    private MatchesViewModel viewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity);
+
+        viewModel = new MatchesViewModel();
 
         adapter = new Adapter(getSupportFragmentManager());
         vpage = findViewById(R.id.viewpager);
@@ -78,7 +84,21 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onListFragmentInteraction(Matches item) {
+        if (!item.liked) {
+            item.liked = true;
+        } else {
+            item.liked = false;
+        }
+        viewModel.updateMatchesItem(item);
+    }
 
+    @Override
+    protected void onPause() {
+        viewModel.clear();
+        super.onPause();
+    }
 
     public void goBackMain(View view){
        Intent goBack = new Intent(SecondActivity.this, MainActivity.class) ;
