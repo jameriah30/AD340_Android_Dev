@@ -13,16 +13,16 @@ import java.util.function.Consumer;
 
 public class MatchesDataModel {
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mValues;
     private HashMap<DatabaseReference, ValueEventListener> listeners;
 
     public MatchesDataModel() {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mValues = FirebaseDatabase.getInstance().getReference();
         listeners = new HashMap<>();
     }
 
     public void getMatchesItems(Consumer<DataSnapshot> dataChangedCallback, Consumer<DatabaseError> dataErrorCallback) {
-        DatabaseReference matchesItemsRef = mDatabase.child("matches");
+        DatabaseReference matchesItemsRef = mValues.child("matches");
         ValueEventListener matchesItemsListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -40,7 +40,7 @@ public class MatchesDataModel {
     }
 
     public void updateMatchesItemById(Matches item) {
-        DatabaseReference matchesItemsRef = mDatabase.child("matches");
+        DatabaseReference matchesItemsRef = mValues.child("matches");
         matchesItemsRef.child(item.uid).setValue(item);
     }
 
