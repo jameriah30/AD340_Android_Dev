@@ -15,7 +15,6 @@ import com.example.jamer.helloworld.models.Matches;
 import com.example.jamer.helloworld.viewmodels.MatchesViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -23,7 +22,7 @@ import java.util.List;
  */
 public class MatchesFragment extends Fragment {
 
-    private List<Matches> mValues;
+
     private OnListFragmentInteractionListener mListener;
     private RecyclerView view;
     private MatchesRecyclerViewAdapter adapter;
@@ -35,7 +34,7 @@ public class MatchesFragment extends Fragment {
 
 
 
-
+    @Nullable
     @Override
     public View onCreateView(@Nullable LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = (RecyclerView) inflater.inflate(
@@ -65,27 +64,6 @@ public class MatchesFragment extends Fragment {
 
         return view;
     }
-
-//    public  class ContentAdapter extends MatchesRecyclerViewAdapter{
-//
-//
-////        private final String[] mNames;
-////        private final String[] mBios;
-////        private final Drawable[] mPictures;
-//
-//        public ContentAdapter(List<Matches>items, OnListFragmentInteractionListener listener) {
-//
-//            mValues = items;
-//            mListener = listener;
-//
-//            if(mValues.isEmpty()){
-//                Toast.makeText(getContext(), "Broke AF" , Toast.LENGTH_LONG).show();
-//            }
-//
-//
-//            }
-//
-//        }
 
     @Override
     public void onAttach(Context context) {

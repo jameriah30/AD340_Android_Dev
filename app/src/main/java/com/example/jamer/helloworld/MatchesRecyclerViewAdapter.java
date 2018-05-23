@@ -25,10 +25,6 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         mListener = listener;
     }
 
-//    public MatchesRecyclerViewAdapter(){
-//
-//    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
