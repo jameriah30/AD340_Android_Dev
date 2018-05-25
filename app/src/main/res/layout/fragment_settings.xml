@@ -1,16 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/settingsTab"
     android:background="@color/profileBackground"
-    tools:context=".SettingsFragment">
+    tools:context="com.example.jamer.helloworld.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/settingsFrag"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_settings_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/settingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/application_settings"
+            android:textSize="40sp"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif"/>
+
+        <TextView
+            android:id="@+id/privacyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif"
+            android:text="@string/private_public"
+            />
+
+        <ToggleButton
+            android:id="@+id/privacy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toggle_selector"/>
+        <!--android:layout_below="@id/toggle"-->
+
+
+        <TextView
+            android:id="@+id/genderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/gender"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif" />
+
+        <EditText
+            android:id="@+id/gender"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/specify_gender"
+            android:inputType="text"
+            style="@style/EditTextFont"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/timeReminderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/time_reminder"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif" />
+
+        <Spinner
+            android:id="@+id/timeReminder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dp" />
+
+        <TextView
+            android:id="@+id/maxDistText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/max_distance"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif" />
+
+        <Spinner
+            android:id="@+id/maxDist"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dp" />
+
+
+        <TextView
+            android:id="@+id/minAgeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/min_age"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif" />
+
+        <EditText
+            android:id="@+id/minAge"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/min_age_matches"
+            android:inputType="number"
+            style="@style/EditTextFont"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/maxAgeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/max_age"
+            style="@style/LargeFont"
+            android:fontFamily="sans-serif" />
+
+        <EditText
+            android:id="@+id/maxAge"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/max_age_matches"
+            android:inputType="number"
+            style="@style/EditTextFont"
+            android:fontFamily="sans-serif" />
+
+
+        <Button
+            android:theme="@style/FlatButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateBtn"
+            android:text="@string/update_settings"
+            android:padding="25dp" />
+
+    </LinearLayout>
+</ScrollView>
