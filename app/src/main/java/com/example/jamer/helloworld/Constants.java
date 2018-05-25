@@ -16,4 +16,13 @@ class Constants {
     static final String KEY_WELCOME_TEXT = "welcome";
     static final String KEY_OCCUPATION = "job";
     static final String KEY_DESCRIPTION = "bio";
+
+
+    static final String GENDER_MESSAGE = "Please specify gender";
+    static final String AGE_MSG = "Please enter age range";
+
+
+
+    //database
+    static final String DB_PRIMARYKEY = "dating_app";
 }
