@@ -31,4 +31,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_blank_matches_fragment">Matches Fragment Soon to Come</string>
     <string name="hello_blank_settings_fragment">Settings Fragment Soon to Come</string>
+    <string name="application_settings">Dating App Settings</string>
+    <string name="time_reminder">Matches Time Reminder Alert</string>
+    <string name="max_distance">Max Distance In Miles</string>
+    <string name="gender">Gender</string>
+    <string name="private_public">Turn Privacy Settings On/Off</string>
+    <string name="min_age">Age Minimum</string>
+    <string name="max_age">Age Maximum</string>
+    <string name="min_age_matches">Preferred Age Minimum of Matches</string>
+    <string name="max_age_matches">Preferred Age Maximum of Matches</string>
+    <string name="update_settings">Update</string>
+    <string name="specify_gender">Specify Gender</string>
 </resources>
