@@ -1,34 +1,31 @@
 package com.example.jamer.helloworld;
 
 
-import android.content.Intent;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import org.junit.Rule;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
 public class SecondActivityTest {
 
-    @Rule
-    public ActivityTestRule<SecondActivity> activityTestRule
-            = new ActivityTestRule<SecondActivity>(SecondActivity.class) {
-        @Override
-        protected Intent getActivityIntent() {
-            Intent intentToTest = new Intent();
-            intentToTest.putExtra(Constants.KEY_FIRST_NAME, "Jeremiah");
-            intentToTest.putExtra(Constants.KEY_LAST_NAME, "Smith");
-            intentToTest.putExtra(Constants.KEY_EMAIL, "jammy@gmail.com");
-            intentToTest.putExtra(Constants.KEY_USERNAME, "jammy35");
-            intentToTest.putExtra(Constants.KEY_AGE, "35");
-            intentToTest.putExtra(Constants.KEY_OCCUPATION, "Student");
-            intentToTest.putExtra(Constants.KEY_DESCRIPTION, "I like craft beer");
-            intentToTest.putExtra(Constants.KEY_PASS, "password");
-            intentToTest.putExtra(Constants.KEY_PASSAGAIN, "password");
-            return intentToTest;
-        }
-    };
+//    @Rule
+//    public ActivityTestRule<SecondActivity> activityTestRule
+//            = new ActivityTestRule<SecondActivity>(SecondActivity.class) {
+//        @Override
+//        protected Intent getActivityIntent() {
+//            Intent intentToTest = new Intent();
+//            intentToTest.putExtra(Constants.KEY_FIRST_NAME, "Jeremiah");
+//            intentToTest.putExtra(Constants.KEY_LAST_NAME, "Smith");
+//            intentToTest.putExtra(Constants.KEY_EMAIL, "jammy@gmail.com");
+//            intentToTest.putExtra(Constants.KEY_USERNAME, "jammy35");
+//            intentToTest.putExtra(Constants.KEY_AGE, "35");
+//            intentToTest.putExtra(Constants.KEY_OCCUPATION, "Student");
+//            intentToTest.putExtra(Constants.KEY_DESCRIPTION, "I like craft beer");
+//            intentToTest.putExtra(Constants.KEY_PASS, "password");
+//            intentToTest.putExtra(Constants.KEY_PASSAGAIN, "password");
+//            return intentToTest;
+//        }
+//    };
 
 //Passed
 //    @Test
