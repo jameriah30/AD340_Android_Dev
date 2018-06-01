@@ -3,7 +3,6 @@ package com.example.jamer.helloworld;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -44,13 +43,13 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
     EditText maxAge;
     Button update;
 
-//    String genderResult;
+
     String maxDistUpdate;
     String timeReminderUpdate;
 
     ArrayAdapter<CharSequence> timeReminderAdapter;
     ArrayAdapter<CharSequence> distanceAdapter;
-//    ArrayAdapter<CharSequence> genderAdapter;
+
 
     @Nullable
     @Override
@@ -145,11 +144,7 @@ public class SettingsFragment extends Fragment implements AdapterView.OnItemSele
     public void Alert(String message) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(getContext());
         builder1.setMessage(message);
-        builder1.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
+        builder1.setNeutralButton("Ok", (dialog, id) -> dialog.cancel());
         builder1.show();
     }
 

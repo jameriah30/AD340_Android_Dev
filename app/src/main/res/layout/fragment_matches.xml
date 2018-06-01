@@ -13,6 +13,7 @@
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/this_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,6 +32,25 @@
             android:layout_marginStart="@dimen/md_keylines"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/longitude"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_title_height"
+            android:layout_alignBottom="@+id/card_title"
+            android:layout_marginStart="@dimen/md_keylines"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/textColor" />
+
+
+        <TextView
+            android:id="@+id/latitude"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_title_height"
+            android:layout_alignBottom="@+id/longitude"
+            android:layout_marginStart="@dimen/md_keylines"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/textColor" />
 
         <TextView
             android:id="@+id/card_text"

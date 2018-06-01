@@ -3,11 +3,7 @@ package com.example.jamer.helloworld.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @IgnoreExtraProperties
 public class Matches implements Parcelable {
@@ -15,22 +11,28 @@ public class Matches implements Parcelable {
     public String name;
     public String imageUrl;
     public boolean liked;
+    public String lat;
+    public String longitude;
 
     public Matches() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Matches(String name, boolean liked, String imageUrl) {
+    public Matches(String name, boolean liked, String imageUrl, String latitude, String longitude) {
         this.name = name;
         this.liked = liked;
         this.imageUrl = imageUrl;
+        this.longitude = longitude;
+        this.lat = lat;
     }
 
-    public Matches(Parcel in) {
-        name = in.readString();
-        imageUrl = in.readString();
-        liked = in.readByte() != 0;
-    }
+//    public Matches(Parcel in) {
+//        name = in.readString();
+//        imageUrl = in.readString();
+//        liked = in.readByte() != 0;
+//        longitude = in.readString();
+//        lat = in.readString();
+//    }
 
     public String getName() {
         return name;
@@ -44,10 +46,19 @@ public class Matches implements Parcelable {
         return liked;
     }
 
+
+    public String getLatitude() {
+        return lat;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
     public static final Creator<Matches> CREATOR = new Creator<Matches>() {
         @Override
         public Matches createFromParcel(Parcel in) {
-            return new Matches(in);
+            return new Matches();
         }
 
         @Override
@@ -56,16 +67,18 @@ public class Matches implements Parcelable {
         }
     };
 
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("uid", uid);
-        result.put("imageUrl", imageUrl);
-        result.put("liked", liked);
-        result.put("name", name);
-
-        return result;
-    }
+//    @Exclude
+//    public Map<String, Object> toMap() {
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("uid", uid);
+//        result.put("imageUrl", imageUrl);
+//        result.put("liked", liked);
+//        result.put("name", name);
+//        result.put("lat", lat);
+//        result.put("long", longitude);
+//
+//        return result;
+//    }
 
     @Override
     public int describeContents() {
@@ -77,5 +90,7 @@ public class Matches implements Parcelable {
         dest.writeString(imageUrl);
         dest.writeString(name);
         dest.writeByte((byte) (liked ? 1 : 0));
+        dest.writeString(longitude);
+        dest.writeString(lat);
     }
 }
