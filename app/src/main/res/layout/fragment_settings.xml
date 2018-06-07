@@ -127,13 +127,17 @@
 
 
         <Button
-            android:theme="@style/FlatButton"
+
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/updateBtn"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:background="#0000ff"
             android:text="@string/update_settings"
-            android:padding="25dp" />
+            android:layout_marginTop="15dp"
+            />
 
     </LinearLayout>
 </ScrollView>
